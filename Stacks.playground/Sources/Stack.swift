@@ -63,6 +63,7 @@ extension Stack: CustomStringConvertible {
 // Helper functions to add new features to the Stack
 // ------------------------------------------------------------------
 
+// TODO: Fix issue with minElement bug
 extension Stack {
     
     public func minimumElement() -> T? {
