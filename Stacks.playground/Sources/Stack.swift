@@ -24,20 +24,29 @@ public struct Stack<T: Comparable> {
         return storage.isEmpty
     }
     
+    // Add element to the top of the stack
     public mutating func push(_ newElement: T) {
         storage.append(newElement)
         print("Appended Element: \(newElement)")
-        
+        updateMinElement()
     }
     
+    // Remove last element from the Stack
     public mutating func pop() {
         _ = storage.removeLast()
+        updateMinElement()
+        //return element
     }
 
+    // Check element on top of the stack
     public func peek() -> T? {
         return storage.last
     }
 }
+
+// ------------------------------------------------------------------
+// Stack Description in user readable format
+// ------------------------------------------------------------------
 
 extension Stack: CustomStringConvertible {
     
@@ -47,5 +56,30 @@ extension Stack: CustomStringConvertible {
         
         let stackElements = storage.map { "\($0)" }.reversed().joined(separator: "\n")
         return topDivider + stackElements + bottomDivider
+    }
+}
+
+// ------------------------------------------------------------------
+// Helper functions to add new features to the Stack
+// ------------------------------------------------------------------
+
+extension Stack {
+    
+    public func minimumElement() -> T? {
+        let result = self.minElement
+        return result
+    }
+    
+    fileprivate mutating func updateMinElement() {
+        
+        if self.count == 1 {
+            self.minElement = self.storage.last
+        }
+        
+        if let last = peek(), let min = self.minElement {
+            if last < min {
+                self.minElement = last
+            }
+        }
     }
 }
