@@ -38,3 +38,14 @@ public struct Stack<T: Comparable> {
         return storage.last
     }
 }
+
+extension Stack: CustomStringConvertible {
+    
+    public var description: String {
+        let topDivider = "\n----Stack----\n"
+        let bottomDivider = "\n------------\n"
+        
+        let stackElements = storage.map { "\($0)" }.reversed().joined(separator: "\n")
+        return topDivider + stackElements + bottomDivider
+    }
+}
