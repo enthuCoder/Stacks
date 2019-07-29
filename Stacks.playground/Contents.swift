@@ -28,7 +28,7 @@ var jersey = Stack<Int>()
 print("Jersey Stack is Empty: \(jersey.isEmpty)")
 
 jersey.push(3)
-jersey.push(7)
+jersey.push(1)
 
 print("Peek: \(String(describing: jersey.peek()))")
 
@@ -36,7 +36,7 @@ jersey.push(2)
 
 print("Count: \(jersey.count)")
 
-jersey.push(1)
+jersey.push(7)
 print(jersey)
 
 if let min = jersey.minimumElement() {
@@ -49,3 +49,8 @@ if let min = jersey.minimumElement() {
     print("New Min Element: \(min)")
 }
 
+print("Removing: \(jersey.pop())")
+
+if let min = jersey.minimumElement() {
+    print("New Min Element: \(min)")
+}

@@ -28,12 +28,16 @@ public struct Stack<T: Comparable> {
     public mutating func push(_ newElement: T) {
         storage.append(newElement)
         print("Appended Element: \(newElement)")
-        updateMinElement()
+        if self.count == 1 {
+            minElement = peek()!
+        } else if let minimum = minElement , newElement < minimum {
+            minElement = newElement
+        }
     }
     
     // Remove last element from the Stack
     public mutating func pop() {
-        _ = storage.removeLast()
+        let lastElement = storage.removeLast()
         updateMinElement()
         //return element
     }
@@ -72,15 +76,10 @@ extension Stack {
     }
     
     fileprivate mutating func updateMinElement() {
-        
-        if self.count == 1 {
-            self.minElement = self.storage.last
-        }
-        
-        if let last = peek(), let min = self.minElement {
-            if last < min {
-                self.minElement = last
-            }
-        }
+//        if self.count == 1 {
+//            minElement = peek()!
+//        } else if let minimum = minElement , newElement < minimum {
+//            minElement = newElement
+//        }
     }
 }
